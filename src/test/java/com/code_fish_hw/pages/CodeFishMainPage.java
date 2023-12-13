@@ -5,7 +5,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.BrowserUtils;
+
+import java.time.Duration;
+import java.util.concurrent.TimeUnit;
 
 public class CodeFishMainPage {
     public CodeFishMainPage(WebDriver driver) {
@@ -49,14 +54,12 @@ public class CodeFishMainPage {
 
     public void applyBtnClick(WebDriver driver){
         BrowserUtils.clickOnElement(driver,this.applyBtn);
-
-        //BrowserUtils.clickWithActions(driver,this.applyBtn);
-
     }
-    public void fillOutFirstAndLastName(WebDriver driver,String firstName,String lastName) throws InterruptedException {
+    public void fillOutFirstAndLastName(WebDriver driver,String firstName,String lastName) {
         this.firstName.sendKeys(firstName);
+        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
         this.lastName.sendKeys(lastName);
-        Thread.sleep(2000);
+        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
         BrowserUtils.scrollWithJs(driver,email);
 
 
@@ -65,15 +68,14 @@ public class CodeFishMainPage {
     public void fillOutEmailPhoneAndClicksChooseYourBtn(WebDriver driver,String email,String phone){
         this.email.sendKeys(email);
         this.phone.sendKeys(phone);
-       // BrowserUtils.clickWithJs(driver,chooseYourCampBtn);
+
         BrowserUtils.clickOnElement(driver, chooseYourCampBtn);
 
 
     }
-    public void courseAndDateSelect(String curseSelect,String startedDateSelect) throws InterruptedException {
+    public void courseAndDateSelect(WebDriver driver,String curseSelect,String startedDateSelect)  {
         BrowserUtils.selectBy(this.curseSelect,curseSelect,"value");
-        Thread.sleep(2000);
-
+        driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
         BrowserUtils.selectBy(this.startedDateSelect,startedDateSelect,"visibleText");
 
     }
@@ -93,12 +95,12 @@ public class CodeFishMainPage {
 
 
     }
-    public void budgetPlanBtnAndStandardBtn(WebDriver driver) throws InterruptedException {
+    public void budgetPlanBtnAndStandardBtn(WebDriver driver)  {
+
         BrowserUtils.clickWithJs(driver,this.budgetPlanBtn);
-        Thread.sleep(1000);
+        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         BrowserUtils.clickWithJs(driver,this.standardPlanBtn);
-        Thread.sleep(1000);
-        //BrowserUtils.clickWithJs(driver,this.submitBtn);
+        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         BrowserUtils.clickWithJs(driver,this.submitBtn);
 
     }

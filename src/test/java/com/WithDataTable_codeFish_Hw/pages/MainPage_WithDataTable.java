@@ -5,7 +5,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.BrowserUtils;
+
+import java.time.Duration;
+import java.util.concurrent.TimeUnit;
 
 public class MainPage_WithDataTable {
     public MainPage_WithDataTable(WebDriver driver) {
@@ -56,10 +61,10 @@ public class MainPage_WithDataTable {
     public void applyBtnClick(WebDriver driver) {
         BrowserUtils.clickOnElement(driver, this.applyBtn);
     }
-    public void fillOutFirstAndLastName(WebDriver driver, String firstName, String lastName) throws InterruptedException {
+    public void fillOutFirstAndLastName(WebDriver driver, String firstName, String lastName)  {
         this.firstName.sendKeys(firstName);
         this.lastName.sendKeys(lastName);
-        Thread.sleep(2000);
+        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
         BrowserUtils.scrollWithJs(driver, email);
     }
     public void fillOutEmailPhoneAndClicksChooseYourBtn(WebDriver driver, String email, String phone) {
@@ -69,10 +74,9 @@ public class MainPage_WithDataTable {
         BrowserUtils.clickOnElement(driver, chooseYourCampBtn);
 
     }
-    public void courseAndDateSelect(String curseSelect, String startedDateSelect) throws InterruptedException {
+    public void courseAndDateSelect(WebDriver driver,String curseSelect, String startedDateSelect) {
         BrowserUtils.selectBy(this.curseSelect, curseSelect, "visibleText");
-        Thread.sleep(2000);
-
+        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         BrowserUtils.selectBy(this.startedDateSelect, startedDateSelect, "visibleText");
     }
     public void onCampusBtnAndReferralBtn(WebDriver driver) {
@@ -87,20 +91,16 @@ public class MainPage_WithDataTable {
     }
     public void budgetPlanBtnAndStandardBtn(WebDriver driver) {
         BrowserUtils.clickWithJs(driver, this.budgetPlanBtn);
-    //    BrowserUtils.clickWithJs(driver, this.standardPlanBtn);
-        //  BrowserUtils.clickWithJs(driver,this.submitBtn);
         BrowserUtils.clickWithActions(driver,this.standardPlanBtn);
-      //  BrowserUtils.clickOnElement(driver,this.submitBtn);
         BrowserUtils.clickWithJs(driver,this.submitBtn);
     }
-    public void validateAllMesages(String msg1, String msg2, String msg3, String msg4) throws InterruptedException {
-        Thread.sleep(400);
-        Assert.assertEquals(BrowserUtils.getText(msg1thankYouMsg), msg1);
-        Thread.sleep(400);
+    public void validateAllMesages(WebDriver driver, String msg1, String msg2, String msg3, String msg4)  {
+         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+         Assert.assertEquals(BrowserUtils.getText(msg1thankYouMsg), msg1);
+        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
         Assert.assertEquals(BrowserUtils.getText(msg2emailConfirmMsg), msg2);
-        Thread.sleep(400);
         Assert.assertEquals(BrowserUtils.getText(msg3_OTWPYA), msg3);
-        Thread.sleep(400);
+        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
         Assert.assertEquals(BrowserUtils.getText(msg4_IFYHAnyQuesDoNotHToReachOut), msg4);
        if (msg4_IFYHAnyQuesDoNotHToReachOut.isDisplayed()){
            for (int i = 0; i < 10; i++) {

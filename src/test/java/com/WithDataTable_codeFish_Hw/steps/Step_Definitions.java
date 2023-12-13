@@ -20,7 +20,7 @@ public class Step_Definitions {
         main.applyBtnClick(driver);
     }
     @Then("user provides firstName and last name")
-    public void user_provides_first_name_and_last_name(io.cucumber.datatable.DataTable dataTable) throws InterruptedException {
+    public void user_provides_first_name_and_last_name(io.cucumber.datatable.DataTable dataTable)  {
         Map<String,String> firstAndLastName= dataTable.asMap();
         BrowserUtils.scrollWithByAmount(driver,200,300);
         main.fillOutFirstAndLastName(driver,firstAndLastName.get("firstName"),firstAndLastName.get("lastName"));
@@ -33,9 +33,9 @@ public class Step_Definitions {
                 emailAndPhoneNumber.get("phone"));
     }
     @Then("user Selects curseType and starting date")
-    public void user_selects_curse_type_and_starting_date(io.cucumber.datatable.DataTable dataTable) throws InterruptedException {
+    public void user_selects_curse_type_and_starting_date(io.cucumber.datatable.DataTable dataTable)  {
         Map<String,String> curseTypeAndStartingDate= dataTable.asMap();
-        main.courseAndDateSelect(curseTypeAndStartingDate.get("curseType"),
+        main.courseAndDateSelect(driver,curseTypeAndStartingDate.get("curseType"),
                 curseTypeAndStartingDate.get("startingDate"));
     }
     @Then("user clicks on campusBtn and clicks referralPromoBtn")
@@ -57,7 +57,7 @@ public class Step_Definitions {
     @Then("user validates confirmation with Msg second message msg2 third msg3 forth msg4|")
     public void user_validates_confirmation_with_msg_second_message_msg2_third_msg3_forth_msg4(io.cucumber.datatable.DataTable dataTable) throws InterruptedException {
         Map<String,String> allMessagesValidations= dataTable.asMap();
-        main.validateAllMesages(allMessagesValidations.get("msg"),
+        main.validateAllMesages(driver,allMessagesValidations.get("msg"),
                 allMessagesValidations.get("msg2"),allMessagesValidations.get("msg3"),
                 allMessagesValidations.get("msg4"));
 

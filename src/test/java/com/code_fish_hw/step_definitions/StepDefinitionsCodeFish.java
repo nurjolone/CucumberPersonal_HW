@@ -7,6 +7,8 @@ import org.openqa.selenium.WebDriver;
 import utils.BrowserUtils;
 import utils.DriverHelper;
 
+import java.util.concurrent.TimeUnit;
+
 public class StepDefinitionsCodeFish {
     WebDriver driver= DriverHelper.getDriver();
     CodeFishMainPage mainPage = new CodeFishMainPage(driver);
@@ -21,29 +23,29 @@ public class StepDefinitionsCodeFish {
 
     }
     @Then("user provide first name as {string} lastName as {string}")
-    public void user_provide_first_name_as_last_name_as(String firstName, String lastName) throws InterruptedException {
-        Thread.sleep(300);
+    public void user_provide_first_name_as_last_name_as(String firstName, String lastName) {
+        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
 
         mainPage.fillOutFirstAndLastName(driver,firstName,lastName);
         BrowserUtils.scrollWithByAmount(driver,200,300);
 
     }
     @Then("email as {string} phone as {string} and clicks ChooseYourCampBtn")
-    public void email_as_phone_as_and_clicks_choose_your_camp_btn(String email, String phoneNumber)
-                                                                                        throws InterruptedException {
-        Thread.sleep(300);
+    public void email_as_phone_as_and_clicks_choose_your_camp_btn(String email, String phoneNumber){
+
+
         mainPage.fillOutEmailPhoneAndClicksChooseYourBtn(driver,email,phoneNumber);
 
     }
     @Then("user SelectsYourCourse as {string} and  date as {string}")
-    public void user_selects_your_course_as_and_date_as(String courseType, String date) throws InterruptedException {
-        Thread.sleep(300);
-        mainPage.courseAndDateSelect(courseType,date);
+    public void user_selects_your_course_as_and_date_as(String courseType, String date)  {
+      //  driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+        mainPage.courseAndDateSelect(driver,courseType,date);
 
     }
     @Then("user clicks on campusBtn and clicks referralPromoBtn")
-    public void user_clicks_on_campus_btn_and_clicks_referralPromoBtn() throws InterruptedException {
-        Thread.sleep(300);
+    public void user_clicks_on_campus_btn_and_clicks_referralPromoBtn()  {
+
         mainPage.onCampusBtnAndReferralBtn(driver);
 
     }
