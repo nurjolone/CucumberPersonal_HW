@@ -102,5 +102,10 @@ public class MainPage_WithDataTable {
         Assert.assertEquals(BrowserUtils.getText(msg3_OTWPYA), msg3);
         Thread.sleep(400);
         Assert.assertEquals(BrowserUtils.getText(msg4_IFYHAnyQuesDoNotHToReachOut), msg4);
+       if (msg4_IFYHAnyQuesDoNotHToReachOut.isDisplayed()){
+           for (int i = 0; i < 10; i++) {
+               System.out.println("HEY THATS WHAT'S UP !");
+           }
+       }
     }
 }
