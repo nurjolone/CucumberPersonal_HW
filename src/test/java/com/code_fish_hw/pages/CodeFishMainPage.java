@@ -57,9 +57,9 @@ public class CodeFishMainPage {
     }
     public void fillOutFirstAndLastName(WebDriver driver,String firstName,String lastName) {
         this.firstName.sendKeys(firstName);
-        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+        //driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
         this.lastName.sendKeys(lastName);
-        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
         BrowserUtils.scrollWithJs(driver,email);
 
 
@@ -74,9 +74,12 @@ public class CodeFishMainPage {
 
     }
     public void courseAndDateSelect(WebDriver driver,String curseSelect,String startedDateSelect)  {
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
         BrowserUtils.selectBy(this.curseSelect,curseSelect,"value");
-        driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         BrowserUtils.selectBy(this.startedDateSelect,startedDateSelect,"visibleText");
+        driver.manage().timeouts().implicitlyWait(25, TimeUnit.SECONDS);
 
     }
 
@@ -98,7 +101,7 @@ public class CodeFishMainPage {
     public void budgetPlanBtnAndStandardBtn(WebDriver driver)  {
 
         BrowserUtils.clickWithJs(driver,this.budgetPlanBtn);
-        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
         BrowserUtils.clickWithJs(driver,this.standardPlanBtn);
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         BrowserUtils.clickWithJs(driver,this.submitBtn);

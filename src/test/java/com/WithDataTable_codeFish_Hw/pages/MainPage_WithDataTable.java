@@ -64,7 +64,7 @@ public class MainPage_WithDataTable {
     public void fillOutFirstAndLastName(WebDriver driver, String firstName, String lastName)  {
         this.firstName.sendKeys(firstName);
         this.lastName.sendKeys(lastName);
-        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         BrowserUtils.scrollWithJs(driver, email);
     }
     public void fillOutEmailPhoneAndClicksChooseYourBtn(WebDriver driver, String email, String phone) {
@@ -75,9 +75,13 @@ public class MainPage_WithDataTable {
 
     }
     public void courseAndDateSelect(WebDriver driver,String curseSelect, String startedDateSelect) {
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
         BrowserUtils.selectBy(this.curseSelect, curseSelect, "visibleText");
-        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
         BrowserUtils.selectBy(this.startedDateSelect, startedDateSelect, "visibleText");
+        driver.manage().timeouts().implicitlyWait(25, TimeUnit.SECONDS);
     }
     public void onCampusBtnAndReferralBtn(WebDriver driver) {
         BrowserUtils.scrollWithByAmount(driver, 200, 300);
@@ -95,12 +99,12 @@ public class MainPage_WithDataTable {
         BrowserUtils.clickWithJs(driver,this.submitBtn);
     }
     public void validateAllMesages(WebDriver driver, String msg1, String msg2, String msg3, String msg4)  {
-         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
          Assert.assertEquals(BrowserUtils.getText(msg1thankYouMsg), msg1);
-        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         Assert.assertEquals(BrowserUtils.getText(msg2emailConfirmMsg), msg2);
         Assert.assertEquals(BrowserUtils.getText(msg3_OTWPYA), msg3);
-        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         Assert.assertEquals(BrowserUtils.getText(msg4_IFYHAnyQuesDoNotHToReachOut), msg4);
        if (msg4_IFYHAnyQuesDoNotHToReachOut.isDisplayed()){
            for (int i = 0; i < 10; i++) {
