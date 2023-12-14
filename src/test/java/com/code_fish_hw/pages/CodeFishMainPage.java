@@ -73,13 +73,14 @@ public class CodeFishMainPage {
 
 
     }
-    public void courseAndDateSelect(WebDriver driver,String curseSelect,String startedDateSelect)  {
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+    public void courseAndDateSelect(WebDriver driver,String curseSelect,String startedDateSelect) throws InterruptedException {
+
 
         BrowserUtils.selectBy(this.curseSelect,curseSelect,"value");
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        Thread.sleep(1000);
+
         BrowserUtils.selectBy(this.startedDateSelect,startedDateSelect,"visibleText");
-        driver.manage().timeouts().implicitlyWait(25, TimeUnit.SECONDS);
+
 
     }
 

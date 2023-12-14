@@ -38,7 +38,7 @@ public class StepDefinitionsCodeFish {
 
     }
     @Then("user SelectsYourCourse as {string} and  date as {string}")
-    public void user_selects_your_course_as_and_date_as(String courseType, String date)  {
+    public void user_selects_your_course_as_and_date_as(String courseType, String date) throws InterruptedException {
       //  driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
         mainPage.courseAndDateSelect(driver,courseType,date);
 

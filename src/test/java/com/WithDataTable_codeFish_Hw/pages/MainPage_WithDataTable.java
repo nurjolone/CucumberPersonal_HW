@@ -74,14 +74,14 @@ public class MainPage_WithDataTable {
         BrowserUtils.clickOnElement(driver, chooseYourCampBtn);
 
     }
-    public void courseAndDateSelect(WebDriver driver,String curseSelect, String startedDateSelect) {
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+    public void courseAndDateSelect(WebDriver driver,String curseSelect, String startedDateSelect) throws InterruptedException {
+
 
         BrowserUtils.selectBy(this.curseSelect, curseSelect, "visibleText");
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        Thread.sleep(1000);
 
         BrowserUtils.selectBy(this.startedDateSelect, startedDateSelect, "visibleText");
-        driver.manage().timeouts().implicitlyWait(25, TimeUnit.SECONDS);
+       // driver.manage().timeouts().implicitlyWait(25, TimeUnit.SECONDS);
     }
     public void onCampusBtnAndReferralBtn(WebDriver driver) {
         BrowserUtils.scrollWithByAmount(driver, 200, 300);

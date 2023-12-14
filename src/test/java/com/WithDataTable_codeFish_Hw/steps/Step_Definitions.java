@@ -33,7 +33,7 @@ public class Step_Definitions {
                 emailAndPhoneNumber.get("phone"));
     }
     @Then("user Selects curseType and starting date")
-    public void user_selects_curse_type_and_starting_date(io.cucumber.datatable.DataTable dataTable)  {
+    public void user_selects_curse_type_and_starting_date(io.cucumber.datatable.DataTable dataTable) throws InterruptedException {
         Map<String,String> curseTypeAndStartingDate= dataTable.asMap();
         main.courseAndDateSelect(driver,curseTypeAndStartingDate.get("curseType"),
                 curseTypeAndStartingDate.get("startingDate"));
